@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabah Guide - Explore Medina</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #3e2723;
+        }
+
+        header {
+            background-color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        header .logo img {
+            width: 60px;
+            height: 60px;
+        }
+
+        header .logo span {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #3e2723;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 20px;
+        }
+
+        #map {
+            height: 500px; /* ارتفاع الخريطة */
+            margin: 20px auto;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+
+        main {
+            text-align: center;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            text-decoration: none;
+            background-color: #3e2723;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #5d4037;
+        }
+
+        footer {
+            background-color: #3e2723;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 20px;
+        }
+
+        /* CSS للنافذة المنبثقة */
+        .popup-content {
+            text-align: center;
+        }
+
+        .popup-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+    </style>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.jpg" alt="Tabah Guide Logo">
+            <span>Tabah Guide</span>
+        </div>
+    </header>
+
+    <img src="haram_image.jpg" alt="Al-Masjid An-Nabawi" class="hero-image">
+
+    <main>
+        <p>Explore Medina's landmarks with an interactive map that helps you discover the most important sites in the city.</p>
+
+        <a href="login.html" class="btn">Login</a>
+        <a href="./discover-madina.html" class="btn">Discover Madina</a>
+        <a href="booking.html" class="btn">Book a Visit</a>
+    </main>
+
+    <div id="map"></div>
+
+    <footer>
+        <p>&copy; 2024 Tabah Guide. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const map = L.map('map').setView([24.467, 39.611], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            maxZoom:  19,
+        }).addTo(map);
+
+        const landmarks = [
+            {
+                name: "Masjid Al-Nabawi",
+                lat: 24.467,
+                lng: 39.611,
+                description: "The Prophet's Mosque is one of the holiest sites in Islam. Abu Hurairah, on the authority of the Prophet Muhammad, said: “A prayer in this mosque of mine is better than a thousand prayers in other mosques, except the Sacred Mosque.”",
+                image: "masjid_al_nabawi.jpg" 
+            },
+            {
+                name: "Quba Mosque",
+                lat: 24.437,
+                lng: 39.630,
+                description: "The Quba Mosque is the first mosque built by Prophet Muhammad (PBUH).",
+                image: "quba_mosque.jpg" 
+            },
+            {
+                name: "Uhud Mountain",
+                lat: 24.504,
+                lng: 39.569,
+                description: "The Uhud Mountain is historically significant for the Battle of Uhud.",
+                image: "uhud_mountain.jpg" 
+            }
+        ];
+
+        landmarks.forEach(landmark => {
+            const marker = L.marker([landmark.lat, landmark.lng]).addTo(map);
+            marker.on('click', () => {
+                let popupContent;
+                if (landmark.name === "Masjid Al-Nabawi") {
+                    popupContent = `
+                        <div class="popup-content">
+                            <h3>${landmark.name}</h3>
+                            <img src="${landmark.image}" alt="${landmark.name}">
+                            <p>${landmark.description}</p>
+                            <a href="index.html" class="btn" style="color:white;">Back</a>
+                        </div>
+                    `;
+                } else {
+                    popupContent = `
+                        <div class="popup-content">
+                            <h3>${landmark.name}</h3>
+                            <img src="${landmark.image}" alt="${landmark.name}">
+                            <p>${landmark.description}</p>
+                            <a href="index.html" class="btn" style="color:white;">Back</a>
+                            <a href="booking.html" class="btn" style="color:white;">Book</a>
+                        </div>
+                    `;
+                }
+                marker.bindPopup(popupContent).openPopup();
+            });
+        });
+    </script>
+</body>
+</html>

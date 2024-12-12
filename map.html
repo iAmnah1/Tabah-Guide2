@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabah Guide - Interactive Map</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_ACTUAL_API_KEY&callback=initMap" async defer></script>
+</head>
+<body>
+    <!-- Header with logo -->
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Tabah Guide Logo">
+            <span>Tabah Guide</span>
+        </div>
+    </header>
+
+    <!-- Main content with map -->
+    <main>
+        <h1>Explore Medina on the Map</h1>
+        <p>Click on the markers to learn more about each landmark in Medina.</p>
+
+        <!-- Interactive Map -->
+        <section id="map" class="map-container"></section>
+    </main>
+
+    <script>
+        function initMap() {
+            // Coordinates for Medina (center of the map)
+            const center = { lat: 24.465, lng: 39.616 };
+
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 13,
+                center: center,
+            });
+
+            // Example landmark markers with descriptions
+            const landmarks = [
+                { lat: 24.475, lng: 39.610, title: "Masjid Nabawi", info: "The Prophet's Mosque is one of the holiest sites in Islam." },
+                { lat: 24.462, lng: 39.585, title: "Quba Mosque", info: "The Quba Mosque is the first mosque built by Prophet Muhammad (PBUH)." },
+                { lat: 24.475, lng: 39.591, title: "Uhud Mountain", info: "The Uhud Mountain is known for the Battle of Uhud." }
+            ];
+
+            // Add markers for each landmark
+            landmarks.forEach(function(landmark) {
+                const marker = new google.maps.Marker({
+                    position: { lat: landmark.lat, lng: landmark.lng },
+                    map: map,
+                    title: landmark.title,
+                });
+
+                // Add info window for each marker
+                const infoWindow = new google.maps.InfoWindow({
+                    content: <h3>${landmark.title}</h3><p>${landmark.info}</p>,
+                });
+
+                marker.addListener("click", function() {
+                    infoWindow.open(map, marker);
+                });
+            });
+        }
+    </script>
+</body>
+</html>

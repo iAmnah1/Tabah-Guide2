@@ -1,0 +1,201 @@
+﻿
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* إعداد الخطوط والألوان الرئيسية */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9; /* لون خلفية فاتح */
+    color: #3e2723; /* بني داكن */
+}
+
+/* تصميم الرأس (Header) */
+header {
+    background-color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+    header .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+    }
+
+        header .logo img {
+            width: 60px;
+            height: 60px;
+        }
+
+        header .logo span {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #3e2723;
+        }
+
+/* تصميم الخريطة */
+#map {
+    height: 500px;
+    margin: 20px auto;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+}
+
+/* الأقسام الرئيسية */
+main {
+    text-align: center;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+    main h1, main h2, main h3 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+        color: #3e2723;
+    }
+
+    main p {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        line-height: 1.6;
+        color: #5d4037; /* بني فاتح */
+    }
+
+/* تصميم الأزرار */
+.btn {
+    text-decoration: none;
+    background-color: #3e2723;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    margin: 10px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+    .btn:hover {
+        background-color: #5d4037;
+    }
+
+/* القوائم */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px auto;
+    text-align: left;
+    max-width: 600px;
+}
+
+    ul li {
+        margin: 10px 0;
+        font-size: 1.2rem;
+        color: #3e2723;
+    }
+
+        ul li a {
+            text-decoration: none;
+            color: #3e2723;
+            transition: color 0.3s ease;
+        }
+
+            ul li a:hover {
+                color: #5d4037;
+            }
+
+/* تصميم النماذج */
+form {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="password"],
+    form input[type="date"],
+    form input[type="time"] ,
+    form input[type="number"]
+     {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+
+    form button {
+        width: 100%;
+        padding: 12px;
+        background-color: #3e2723;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        form button:hover {
+            background-color: #5d4037;
+        }
+
+/* الفوتر */
+footer {
+    background-color: #3e2723;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 20px;
+    font-size: 1rem;
+}
+
+/* الخريطة التفاعلية الصغيرة */
+.map-container-small {
+    height: 400px;
+    margin: 20px auto;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+}
+.confirmation{
+    margin-top: 200px;
+}
+.footer{
+   position: fixed;
+   bottom: 0;
+   right: 0;
+   left: 0;
+}
+.btn-link-home{
+   text-decoration: none;
+   color: white;
+   background-color: #3e2723;
+   padding: 12px 20px;
+   border-radius: 5px;
+   font-size: 1.2rem;
+   margin: 10px;
+   display: inline-block;
+   transition: background-color 0.3s ease
+}
+.LINK {
+    text-decoration: none;
+    color: #3e2723;
+    font-weight: bold;
+    position: absolute;
+    transition: color 0.3s ease;
+    right: 20px;
+}
+
+.LINK:hover {
+    text-decoration: underline;
+    color: #5d4037;
+}
